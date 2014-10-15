@@ -1,0 +1,7 @@
+dependencies {
+    //spring
+    compile (
+        "org.springframework.data:spring-data-mongodb:1.6.0.RELEASE",  
+        "com.fasterxml.jackson.core:jackson-annotations:2.4.1"
+    )  
+}

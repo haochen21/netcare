@@ -1,0 +1,16 @@
+dependencies {
+    compile project(':netcare-model'), project(':netcare-repository')   
+    
+    //spring
+    compile (
+        "org.springframework:spring-context:$springVersion",    
+        "org.springframework:spring-aop:$springVersion",
+        "org.springframework:spring-aspects:$springVersion",       
+        "org.springframework:spring-tx:$springVersion"
+    )        
+    
+    testCompile (
+        "junit:junit:4.11",
+        "org.springframework:spring-test:$springVersion"
+    )
+}    

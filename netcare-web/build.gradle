@@ -1,0 +1,25 @@
+apply plugin: 'war'  
+
+dependencies {
+    compile project(':netcare-service')
+    
+    compile (
+        "org.springframework:spring-web:$springVersion",    
+        "org.springframework:spring-jms:$springVersion",
+        "org.springframework:spring-messaging:$springVersion",
+        "org.springframework:spring-webmvc:$springVersion",
+        "org.springframework:spring-aspects:$springVersion",       
+        "org.apache.activemq:activemq-all:5.10.0",
+        "com.fasterxml.jackson.core:jackson-core:2.4.1",
+        "com.fasterxml.jackson.core:jackson-databind:2.4.1",
+        "org.springframework.data:spring-data-mongodb:1.6.0.RELEASE",  
+        "com.fasterxml.jackson.core:jackson-annotations:2.4.1"
+        
+    )   
+    
+    providedCompile (
+        "javax.servlet:javax.servlet-api:3.1.0",
+        "javax.servlet.jsp:jsp-api:2.1"
+    )      
+    
+}
