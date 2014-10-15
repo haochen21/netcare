@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  
+  <appender name="REPOSITORYFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/repository/repository.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>../logs/repository/repository%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+	
+	<appender name="SERVICEFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/service/service.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>../logs/service/service%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+	
+	<appender name="ALARMFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/alarm/alarm.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>../logs/alarm/alarm%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="nsgsw1.netcare.alarm">
+		<level value="INFO" />
+		<appender-ref ref="ALARMFILE" />
+	</logger>	
+	
+	<logger name="nsgsw1.netcare.repository">
+		<level value="INFO" />
+		<appender-ref ref="REPOSITORYFILE" />
+	</logger>	
+	
+	<logger name="nsgsw1.netcare.service">
+		<level value="INFO" />
+		<appender-ref ref="SERVICEFILE" />
+	</logger>	
+	<!--
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	  -->
+</configuration>

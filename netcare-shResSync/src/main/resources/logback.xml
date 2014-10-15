@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  
+  <appender name="MONGODBFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/repository/repository.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>logs/repository/repository%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+	
+	<appender name="SHRESSYNCFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/sync/sync.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>logs/sync/sync%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+	
+	<appender name="JPAFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<File>../logs/jpa/jpa.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d %5p [ %F:%L ] - %m%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>logs/jpa/jpa%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>	
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender> 	
+	 
+	<logger name="nsgsw1.netcare.shres.sync">
+		<level value="INFO" />
+		<appender-ref ref="SHRESSYNCFILE" />
+	</logger>	
+	
+	<logger name="nsgsw1.netcare.shres.repository">
+		<level value="INFO" />
+		<appender-ref ref="JPAFILE" />
+	</logger>	
+	
+	<logger name="nsgsw1.netcare.repository">
+		<level value="INFO" />
+		<appender-ref ref="MONGODBFILE" />
+	</logger>
+	        
+    <root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+</configuration>
