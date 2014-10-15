@@ -1,0 +1,38 @@
+ext{   
+    slf4jVersion = "1.7.7"  
+    springVersion = '4.0.7.RELEASE' 
+    hibernateVersion = '4.3.6.Final'
+}  
+
+allprojects {
+    apply plugin: 'eclipse'
+    group = 'nsgsw1.netcare'
+    version = '0.1'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp'
+    
+    configurations {
+        all*.exclude group: "commons-logging", module: "commons-logging"
+    }
+    
+    repositories {
+        mavenCentral()
+        maven {
+            url 'http://repo.spring.io/milestone'
+        }
+    }
+    
+    dependencies {
+        // Logging
+        compile "ch.qos.logback:logback-classic:1.1.2"
+        runtime (
+            "org.slf4j:slf4j-api:$slf4jVersion",
+            "org.slf4j:jcl-over-slf4j:$slf4jVersion"
+        )
+    }
+    
+    sourceCompatibility = 1.8
+}

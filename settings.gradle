@@ -1,0 +1,7 @@
+include 'netcare-model'
+include 'netcare-repository'
+include 'netcare-service'
+include 'netcare-web'
+include 'netcare-shResSync'
+include 'netcare-cnsAlarmConvert'
+include 'netcare-alarmHandle'
